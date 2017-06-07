@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<h2>List All Uploaded Files</h2>
+	<div>
+
+		<ul>
+			<table style="width: 80%">
+				<li th:each="fileWrapper : ${listFileWrappers}">
+				
+				<tr>
+					<td>File Name</td>
+					<td><a 
+						th:text="${fileWrapper.filename}" /></td>
+					
+					
+				</tr>
+				
+				<tr>
+					<td>File ID</td>
+					<td><a th:text="${fileWrapper.id}" /></td>
+				</tr>
+				
+				<tr>
+					<td>File Path</td>
+					<td><a  
+						th:text="${fileWrapper.absolutePath}" /></td>
+				</tr>
+
+				<tr>
+					<td>File Size</td>
+					<td><a 
+						th:text="${fileWrapper.length}" /></td>
+				</tr>
+				<tr><td>_________________________________________________</td></tr>
+				</li>
+			</table>
+		</ul>
+	</div>
+	<div>
+		<h3 th:text="${totalFiles}" />
+		<a href="/backtoListOfFiles">Back!</a>
+	</div>
+
+</body>
+</html>

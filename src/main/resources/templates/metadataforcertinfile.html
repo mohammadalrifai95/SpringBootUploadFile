@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text] {
+	width: 130px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	background-image: url('searchicon.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding: 12px 20px 12px 40px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+	width: 100%;
+}
+</style>
+</head>
+<body>
+
+	<p>Enter File Name For Meta-data Searching:</p>
+
+	<form method="GET" action="/serchforfilemetadata">
+		<input type="text" name="fileName" placeholder="Search.."></input> <input
+			type="submit" value="Search" />
+	</form>
+
+	<div>
+		<ul>
+			<table style="width: 80%">
+				<li th:each="fileWrapper : ${listFileWrappers}">
+				<tr>
+					<td>File Name</td>
+					<td><a th:text="${fileWrapper.filename}" /></td>
+				</tr>
+
+				<tr>
+					<td>File ID</td>
+					<td><a th:text="${fileWrapper.id}" /></td>
+				</tr>
+
+				<tr>
+					<td>File Path</td>
+					<td><a th:text="${fileWrapper.absolutePath}" /></td>
+				</tr>
+
+				<tr>
+					<td>File Size</td>
+					<td><a th:text="${fileWrapper.length}" /></td>
+				</tr>
+				<tr>
+					<td>_________________________________________________</td>
+				</tr>
+				</li>
+			</table>
+		</ul>
+	</div>
+	<div>
+		<a href="/backtoListOfFiles">Back!</a>
+	</div>
+
+
+
+</body>
+</html>
